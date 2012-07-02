@@ -12,7 +12,9 @@ import sys
 from elementtree.ElementTree import Element, SubElement, dump, tostring
 from elementtree.SimpleXMLWriter import XMLWriter
 
-MPS_TO_MPH = 2.237
+#Metric version
+#MPS_TO_MPH = 2.237
+MPS_TO_KPH = 1.609
 
 def XMLHeader():
     return '<?xml version="1.0" encoding="UTF-8"?>'
@@ -125,7 +127,7 @@ def main():
         
         # SPEED
         speed = float(row['SPEED'])
-        speed *= MPS_TO_MPH
+        speed *= MPS_TO_KPH
         ns3Element = SubElement(extElement, 'ns3:TPX')
         speedElement = SubElement(ns3Element, 'ns3:Speed')
         speedElement.text = str(speed)
